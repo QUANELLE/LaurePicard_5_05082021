@@ -1,0 +1,17 @@
+.container {
+    border: 1px solid black;
+    height: 100vh;
+}
+.row { 
+    border: blue solid 1px;
+    height: 30%;
+}
+.col, .col-2, .col-4 {
+    border:3px solid rgb(160, 95, 100);
+}
+/* .contenu {
+    min-height: 300px;
+} */
+footer {
+    height: 100px;
+}
