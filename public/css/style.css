@@ -1,15 +1,11 @@
-.container {
-    border: 1px solid black;
+container {
+    border: 10px solid black;
     height: 100vh;
-}
-.row { 
-    border: blue solid 1px;
-    height: 30%;
-}
-.col, .col-2, .col-4 {
-    border:3px solid rgb(160, 95, 100);
+    width: 90vw;
 }
 
+
 footer {
+    border: black solid 1px;
     height: 100px;
 }
