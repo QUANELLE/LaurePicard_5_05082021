@@ -1,11 +1,12 @@
-container {
+main {
     border: 10px solid black;
     height: 100vh;
     width: 90vw;
 }
 
 
-footer {
+footer, aside, section, article {
     border: black solid 1px;
     height: 100px;
+    display: flex;
 }
