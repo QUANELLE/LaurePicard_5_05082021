@@ -13,10 +13,11 @@ fetch("http://localhost:3000/api/teddies")
     // console.log(data);
     for(i=0; i<data.length; i++){
         // creation sous forme de variables des éléments à injecter dans le DOM
-        let newLi = document.createElement('li');
+        let newDiv = document.createElement('div');
         let newNom = document.createElement('h2');
         let newPrix = document.createElement('p');
         let newPhoto = document.createElement('p');
+        let newBtn = document.createElement('button');
         // récupération de l'url de l'image
         let url = data[i].imageUrl;
 
@@ -24,15 +25,18 @@ fetch("http://localhost:3000/api/teddies")
         newNom.innerText =data[i].name;
         newPhoto.innerHTML =`<img src="${url}">` ;
         newPrix.innerText = data[i].price;
+        newBtn.innerHTML = `<button class="btnVoir">Voir cet article</button>`;
 
-        // insertion des éléments dans les li
+        // insertion des éléments dans les Div
 
-        newLi.appendChild(newNom);
-        newLi.appendChild(newPhoto);
-        newLi.appendChild(newPrix);
+        newDiv.appendChild(newNom);
+        newDiv.appendChild(newPhoto);
+        newDiv.appendChild(newPrix);
+        newDiv.appendChild(newBtn);
 
-        // ajout des li dans ul
-        liste.appendChild(newLi);
+
+        // ajout des Div dans ul
+        liste.appendChild(newDiv);
 
 
 
