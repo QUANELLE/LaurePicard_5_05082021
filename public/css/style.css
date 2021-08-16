@@ -13,12 +13,23 @@ footer, aside, section, article {
 }
 /* ------------------- */
 
-footer, aside, section, article {
+footer, main {
     display: flex;
-    /* flex-direction: column; */
+    
+}
+.contenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 img {
     width: 200px;
     height: 200px;
+}
+figure a {
+    width: 100px;
+    height: 50px;
+    border: blueviolet solid 2px;
 }
