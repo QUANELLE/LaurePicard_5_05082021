@@ -1,24 +1,33 @@
 
 /* css de travail */
-/* main {
-    border: 10px solid black;
-    height: 100vh;
-    width: 90vw;
-} */
 
-
-footer, aside, section, article {
+footer, section {
     border: black solid 1px;
-    /* height: 100px; */
-}
+    }
 /* ------------------- */
 
-footer, aside, section, article {
+footer, main {
     display: flex;
-    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.contenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 img {
     width: 200px;
-    height: 200px;
+    height: auto;
+}
+figure button {
+    display: inline-block;
+    /* width: 100px;
+    height: 30px; */
+    border: blueviolet solid 2px;
+    background-color: cadetblue;
 }
