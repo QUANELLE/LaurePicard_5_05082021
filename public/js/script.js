@@ -1,10 +1,6 @@
 
 const liste = document.querySelector('.liste');
-const btnVoir =document.querySelector('.btnVoir');
-
-// btnVoir.addEventListener('click',() =>console.log("test bntVoir"));
-
-
+// const btnVoir =document.querySelector('.btnVoir');
 
 
 fetch("http://localhost:3000/api/teddies")
@@ -17,7 +13,7 @@ fetch("http://localhost:3000/api/teddies")
         let newName = document.createElement('h2');
         let newPrice = document.createElement('p');
         let newPhoto = document.createElement('img');
-        let newBtn = document.createElement('button');
+        // let newBtn = document.createElement('button');
         let newLink = document.createElement('a');
         
         // récupération de l'url de l'image
@@ -25,29 +21,23 @@ fetch("http://localhost:3000/api/teddies")
         // récupération de l'id
         let id = data[i]._id;
         // console.log(id);
+       
         // récupération des données souhaitées dans l'API
         newName.innerText =data[i].name;
         newPhoto.src = url;
         newPrice.innerText = data[i].price;
-        newLink.href = id;
-        newBtn.innerHTML = `<a href="id" class="btnVoir">Voir cet article</a>`;
+        newLink.href = `./vues/produits.html?id=${id}`;
+        newLink.innerText = "Voir cet article";
+        newLink.classList = "btnVoir";
 
         // insertion des éléments dans les Div
 
         newArticle.appendChild(newName);
         newArticle.appendChild(newPhoto);
         newArticle.appendChild(newPrice);
-        newArticle.appendChild(newBtn);
-        newBtn.appendChild(newLink);
-
-
-
+        newArticle.appendChild(newLink);
+        
         // ajout des Div dans liste
-        liste.appendChild(newArticle);
-
-
-
-
-    
+        liste.appendChild(newArticle);  
     }
 })
