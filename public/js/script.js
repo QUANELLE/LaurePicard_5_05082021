@@ -25,7 +25,7 @@ fetch("http://localhost:3000/api/teddies")
         // récupération des données souhaitées dans l'API
         newName.innerText =data[i].name;
         newPhoto.src = url;
-        newPrice.innerText = data[i].price;
+        newPrice.innerText = data[i].price/100+" euros";
         newLink.href = `./vues/produits.html?id=${id}`;
         newLink.innerText = "Voir cet article";
         newLink.classList = "btnVoir";

@@ -34,7 +34,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         newPhoto.src = url;
         
         newName.innerText =data.name;        
-        newPrice.innerText = data.price;
+        newPrice.innerText = data.price/100+" euros";
         newDescription.innerText = data.description;
         
         article.appendChild(newName);

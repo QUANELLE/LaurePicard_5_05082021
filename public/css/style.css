@@ -5,6 +5,9 @@ footer, main {
     flex-wrap: wrap;
     
 }
+header, footer {
+    background-color: rgb(243, 236, 238);
+}
 .contenu {
     display: flex;
     flex-direction: column;
