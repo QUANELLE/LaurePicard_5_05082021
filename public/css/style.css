@@ -39,3 +39,8 @@ figure {
     align-items: center;
     padding: 10px;
 }
+.infosFooter {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
