@@ -1,24 +1,41 @@
-
-/* css de travail */
-/* main {
-    border: 10px solid black;
-    height: 100vh;
-    width: 90vw;
-} */
-
-
-footer, aside, section, article {
-    border: black solid 1px;
-    /* height: 100px; */
-}
-/* ------------------- */
-
-footer, aside, section, article {
+footer, main {
     display: flex;
-    /* flex-direction: column; */
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+header, footer {
+    background-color: rgb(243, 236, 238);
+}
+.contenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: tan;
 
 }
 img {
-    width: 200px;
-    height: 200px;
+    width: 35vh;
+    height: auto;
+    border-radius: 10%;
+}
+.btnVoir {
+    display: inline-block;
+   border-radius: 10%;
+   padding: 0.5rem;
+    /* border: blueviolet solid 2px; */
+    background-color: rgb(102, 63, 9);
+    text-decoration: none;
+    color: white;
+}
+figure {
+    border:rgb(41, 25, 2) solid 3px;
+    border-radius: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
