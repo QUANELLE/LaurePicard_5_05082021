@@ -10,7 +10,7 @@ fetch("http://localhost:3000/api/teddies")
     for(i=0; i<data.length; i++){
         // creation sous forme de variables des éléments à injecter dans le DOM
         let newArticle = document.createElement('figure');
-        let newName = document.createElement('h2');
+        let newName = document.createElement('h3');
         let newPrice = document.createElement('p');
         let newPhoto = document.createElement('img');
         // let newBtn = document.createElement('button');
