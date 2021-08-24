@@ -22,11 +22,11 @@ fetch("http://localhost:3000/api/teddies")
         let id = data[i]._id;
         // console.log(id);
        
-        // récupération des données souhaitées dans l'API
+        // récupération des données de l'API à injecter dans les variables
         newName.innerText =data[i].name;
         newPhoto.src = url;
         newPrice.innerText = data[i].price/100+" euros";
-        newLink.href = `./vues/produits.html?id=${id}`;
+        newLink.href = `./vues/produit.html?id=${id}`;
         newLink.innerText = "Voir cet article";
         newLink.classList = "btnVoir";
 
