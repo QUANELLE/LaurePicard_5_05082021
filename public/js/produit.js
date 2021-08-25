@@ -31,7 +31,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         let newLabel = document.createElement('label');
         let newSelect = document.createElement('select');
         let selectOption=[];
-        let newBtnEnvoyer = document.createElement('input');
+        let newBtnSubmit = document.createElement('input');
                
         // récupération de l'url de l'image
         let url = data.imageUrl;
@@ -45,11 +45,14 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         // création des balises html du formulaire
         newLabel.innerText = "Choisissez la couleur ";
         newLabel.htmlFor = "couleurs";
-        newSelect.setAttribute("name","choixCouleurs");
+        newSelect.setAttribute("name","choixCouleurs");        
         newSelect.id = "couleurs";
-        newBtnEnvoyer.type = "submit";
-        newBtnEnvoyer.value = "Acheter";
-        // console.log(newBtnEnvoyer); 
+        newBtnSubmit.type = "submit";
+        newBtnSubmit.name = "couleurs[]";
+
+        newBtnSubmit.value = "Acheter";
+        console.log(newBtnSubmit); 
+        console.log(newSelect); 
         
         
         // boucle iteration pour les options 
@@ -61,12 +64,14 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
             newSelect.innerHTML = selectOption;
         
     }
-    // console.log(selectOption);
+    console.log(selectOption);
+    
+    
 
     // création formulaire en y injectant balises html
         newForm.appendChild(newLabel);
         newForm.appendChild(newSelect); 
-        newForm.appendChild(newBtnEnvoyer); 
+        newForm.appendChild(newBtnSubmit); 
     // console.log(newForm);
         
      // récupération des données de l'API à injecter dans les variables
@@ -82,7 +87,31 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         article.appendChild(newDescription);
         article.appendChild(newPrice);
         article.appendChild(newForm);
-        
+        // affichage choix de l'option par utilisateur
+        let select = document.querySelector('select');
+        let colorSelect = "";
+        select.addEventListener('change',(e)=>{
+            let colorSelect = e.target.value;
+            console.log(colorSelect);
+        }  )
+
+        // prise en compte du panier
+        newBtnSubmit.addEventListener("click", (e)=>{
+            e.preventDefault();
+            
+            // récupération du produit sélectionné par l'utilisateur
+            
+            // let ProductSelect = {
+                
+            //     idProduit = id,
+            //     // choixCouleur = colorSelect
+            //  }
+                
+            
+            // console.log(ProductSelect);
+            // console.log(option);
+    //         
+        })
     })
     
     
