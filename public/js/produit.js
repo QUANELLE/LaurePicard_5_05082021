@@ -12,7 +12,7 @@ const article = document.querySelector('.article');
 let params = new URL(window.location.href).searchParams;
 // console.log(params);
 let id = params.get('id');
-// console.log(id);
+console.log(id);
 
 
 
@@ -21,6 +21,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
 .then(res=> res.json())
 .then(data => {
     console.log(data);
+        console.log(data);
             
         // creation sous forme de variables des éléments à injecter dans le DOM
         let newName = document.createElement('h2');
@@ -87,30 +88,24 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
         article.appendChild(newDescription);
         article.appendChild(newPrice);
         article.appendChild(newForm);
-        // affichage choix de l'option par utilisateur
-        let select = document.querySelector('select');
-        let colorSelect = "";
-        select.addEventListener('change',(e)=>{
-            let colorSelect = e.target.value;
-            console.log(colorSelect);
-        }  )
-
+        
         // prise en compte du panier
         newBtnSubmit.addEventListener("click", (e)=>{
             e.preventDefault();
+            // récup choix de l'option par utilisateur
+            let select = document.querySelector('select');           
+            let colorSelect = select.value;
+                        
             
             // récupération du produit sélectionné par l'utilisateur
             
-            // let ProductSelect = {
-                
-            //     idProduit = id,
-            //     // choixCouleur = colorSelect
-            //  }
-                
-            
-            // console.log(ProductSelect);
-            // console.log(option);
-    //         
+            let ProductSelect = {                
+                idProduit: data._id,
+                nomProduit : data.name,
+                prix : data.price/100,
+                choixCouleur : colorSelect
+             };                         
+            console.log(ProductSelect);                      
         })
     })
     
