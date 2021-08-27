@@ -105,7 +105,12 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
                 prix : data.price/100,
                 choixCouleur : colorSelect
              };                         
-            console.log(ProductSelect);                      
+            console.log(ProductSelect);
+            // transformation de l'objet ProductSelect en json pour le stocker dans le localStorage
+            let jsonProduct =  JSON.stringify(ProductSelect);
+            // console.log(jsonProduct);
+            localStorage.produit = jsonProduct;
+                              
         })
     })
     
