@@ -44,3 +44,26 @@ figure {
     justify-content: space-around;
     align-items: stretch;
 }
+
+.article-panier {
+display: flex;
+justify-content: space-between;
+width: 60vw;
+background-color: rgb(243, 236, 238);
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 10px;
+}
+#BtnProduitPanier {
+    display: block;    
+    margin: auto;
+    background-color: tan;
+    border-radius: 15px;
+    padding: 4px;
+    
+}
+/* BtnProduitPanier a {
+
+    text-decoration: none;
+    color: white !important;
+} */

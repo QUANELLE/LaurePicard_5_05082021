@@ -108,9 +108,32 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
             console.log(ProductSelect);
             // transformation de l'objet ProductSelect en json pour le stocker dans le localStorage
             let jsonProduct =  JSON.stringify(ProductSelect);
-            // console.log(jsonProduct);
-            localStorage.produit = jsonProduct;
-                              
+            console.log(jsonProduct);
+            // localStorage.produit =jsonProduct;
+
+            // mettre plusieurs produits dans localstorage
+
+            // variable qui récupère le contenu du localStorage en JS
+            // let listProductSelect = JSON.parse(localStorage.getItem("produit"));
+            let listProductSelect = [localStorage.getItem("produit")];
+            
+            console.log(listProductSelect);
+            // listProductSelect.push(jsonProduct);
+            
+            if(!listProductSelect){
+                localStorage.produit =jsonProduct;
+                // listProductSelect.push(jsonProduct);
+                // localStorage.setItem ("produit" , JSON.stringify(listProductSelect));
+                // localStorage.setItem ("produit" , listProductSelect);
+            }
+            else {
+                // listProductSelect = [];
+                listProductSelect.push(jsonProduct);
+                // localStorage.setItem ("produit" , JSON.stringify(listProductSelect));
+                localStorage.setItem ("produit" , listProductSelect);
+
+            }
+             console.log(listProductSelect);                 
         })
     })
     
