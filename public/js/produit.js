@@ -106,34 +106,29 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
                 choixCouleur : colorSelect
              };                         
             console.log(ProductSelect);
-            // transformation de l'objet ProductSelect en json pour le stocker dans le localStorage
-            let jsonProduct =  JSON.stringify(ProductSelect);
-            console.log(jsonProduct);
-            // localStorage.produit =jsonProduct;
+            
 
             // mettre plusieurs produits dans localstorage
 
             // variable qui récupère le contenu du localStorage en JS
-            // let listProductSelect = JSON.parse(localStorage.getItem("produit"));
-            let listProductSelect = [localStorage.getItem("produit")];
+            let listProductStock = JSON.parse(localStorage.getItem("produit"));            
             
-            console.log(listProductSelect);
-            // listProductSelect.push(jsonProduct);
+            // instructions if...else suivant si il y a déjà un produit dans le panier( et donc dans le localStorage)
             
-            if(!listProductSelect){
-                localStorage.produit =jsonProduct;
-                // listProductSelect.push(jsonProduct);
-                // localStorage.setItem ("produit" , JSON.stringify(listProductSelect));
-                // localStorage.setItem ("produit" , listProductSelect);
+            if(!listProductStock){
+                listProductStock = [];
+                listProductStock.push(ProductSelect);
+                console.log(listProductStock);                 
+                localStorage.produit = JSON.stringify(listProductStock);
+                
             }
             else {
-                // listProductSelect = [];
-                listProductSelect.push(jsonProduct);
-                // localStorage.setItem ("produit" , JSON.stringify(listProductSelect));
-                localStorage.setItem ("produit" , listProductSelect);
+                listProductStock.push(ProductSelect);
+                localStorage.produit = JSON.stringify(listProductStock);                
+                console.log(listProductStock)
+               
 
             }
-             console.log(listProductSelect);                 
         })
     })
     
