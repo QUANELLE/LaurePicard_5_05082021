@@ -54,6 +54,17 @@ padding: 20px;
 margin-bottom: 20px;
 border-radius: 10px;
 }
+.titre-tableau {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    background-color: rgb(126, 108, 84);
+    color:wheat;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
 #BtnProduitPanier {
     display: block;    
     margin: auto;
