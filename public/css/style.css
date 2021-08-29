@@ -54,7 +54,7 @@ padding: 20px;
 margin-bottom: 20px;
 border-radius: 10px;
 }
-.titre-tableau {
+.titre-tableau, .totalPanier {
     display: flex;
     justify-content: space-between;
     width: 60vw;
