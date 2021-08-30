@@ -74,7 +74,7 @@ for(i=0; i<produitPanier.length; i++){
     // console.log(Total);
 
     // insertion du total dans le html
-    newPriceTotal.innerText = Total+"€";
+    newPriceTotal.innerText = Total+" euros";
     somme.appendChild(newPriceTotal);  
 }
     
