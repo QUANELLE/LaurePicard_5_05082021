@@ -1,10 +1,10 @@
-
+"use strict";
 const liste = document.querySelector('.liste');
 
 
 // fonction asynchrone pour afficher liste des articles
 
-async function listArticles() {
+async function listArticles(i) {
     // appel à l'API
     const response = await fetch("http://localhost:3000/api/teddies");
     

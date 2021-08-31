@@ -1,4 +1,4 @@
-
+"use strict";
 let tBody = document.querySelector('tBody');
 let somme = document.querySelector('.somme');
 // console.log(tBody);
@@ -11,7 +11,7 @@ console.log(produitPanier);
 // insertion des éléments dans le html du panier
 
 
-for(i=0; i<produitPanier.length; i++){
+for(let i=0; i<produitPanier.length; i++){
     // creation sous forme de variables des éléments à injecter dans le DOM
     
     let newArticle = document.createElement('tr');
@@ -60,7 +60,7 @@ let newPriceTotal = document.createElement('td');
 let TotalPrices=[];
 
 // boucle pour récupérer les prix du panier et en faire leur somme
-for(i=0; i<produitPanier.length; i++){
+for(let i=0; i<produitPanier.length; i++){
     // récup de chaque prix du panier    
     let priceItem = produitPanier[i].prix;    
 
