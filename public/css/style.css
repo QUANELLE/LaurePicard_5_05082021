@@ -44,7 +44,12 @@ figure {
     justify-content: space-around;
     align-items: stretch;
 }
-
+.boutons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    /* align-items: stretch; */
+}
 .article-panier {
 display: flex;
 justify-content: space-between;
@@ -64,7 +69,7 @@ border-radius: 10px;
     margin-bottom: 20px;
     border-radius: 10px;
 }
-#BtnProduitPanier {
+.btnsProduit {
     display: block;    
     margin: auto;
     background-color: tan;
