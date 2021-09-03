@@ -48,7 +48,8 @@ figure {
     display: flex;
     justify-content: center;
     padding: 20px;
-    /* align-items: stretch; */
+    background-color: rgb(226, 199, 213);
+    align-items: stretch;
 }
 .article-panier {
 display: flex;
