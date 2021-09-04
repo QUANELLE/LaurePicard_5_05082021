@@ -14,9 +14,9 @@ console.log(formulaire);
 
 
 // récup produit stocké dans le localStorage et transformation du json en objet JS(tableau)
-let products = JSON.parse(localStorage.getItem("panier"));
-// console.log(products);
-if (products==null || !products || products==0) {
+let produitpanier = JSON.parse(localStorage.getItem("panier"));
+console.log(produitpanier);
+if (produitpanier==null || !produitpanier || produitpanier==0) {
     titre.innerText = "Votre panier est vide";
     tableau.style.display = "none" ;
     sectionBtns.style.display = "none" ;
@@ -27,7 +27,7 @@ if (products==null || !products || products==0) {
     
     const insertElsPanier = () =>{
         
-        for (let i = 0; i < products.length; i++) {
+        for (let i = 0; i < produitpanier.length; i++) {
             // creation sous forme de variables des éléments à injecter dans le DOM
             
             let newArticle = document.createElement('tr');
@@ -38,13 +38,13 @@ if (products==null || !products || products==0) {
             
             
             // récupération de l'id
-            let id = products[i].idProduit;
+            let id = produitpanier[i].idProduit;
             console.log(id);
             
             // Données  à injecter dans les variables
-            newName.innerText = products[i].nomProduit;
-            newPrice.innerText = products[i].prix + " euros";
-            newColor.innerText = products[i].choixCouleur;
+            newName.innerText = produitpanier[i].nomProduit;
+            newPrice.innerText = produitpanier[i].prix + " euros";
+            newColor.innerText = produitpanier[i].choixCouleur;
             newBtnSupprProd.innerHTML ='<button class="BtnSupprProd">Supprimer du panier</button>' ;
             
             
@@ -77,9 +77,9 @@ if (products==null || !products || products==0) {
     const calcTotal = ()=> {
     
         // boucle pour récupérer les prix du panier et en faire leur somme
-        for (let i = 0; i < products.length; i++) {
+        for (let i = 0; i < produitpanier.length; i++) {
             // récup de chaque prix du panier    
-            let priceItem = products[i].prix;
+            let priceItem = produitpanier[i].prix;
             
             // insertion de chaque prix dans le tableau TotalPrices  
             TotalPrices.push(priceItem);
@@ -105,11 +105,11 @@ if (products==null || !products || products==0) {
         // sélection du bouton "cliqué"
         AllBtnSupprProd[b].addEventListener("click", (e) => {
             e.preventDefault();  
-            // Suppression du produit en le selectionnant par son index dans le tableau products       
-            products.splice(b,1);
-            // console.log(products);
+            // Suppression du produit en le selectionnant par son index dans le tableau produitpanier       
+            produitpanier.splice(b,1);
+            // console.log(produitpanier);
             // injection du nouveau panier dans le localStorage
-            localStorage.panier = JSON.stringify(products);
+            localStorage.panier = JSON.stringify(produitpanier);
             // alerte pour l'utilisateur et rechargement de la page
             alert(`Votre produit a bien été supprimé du panier`);
             window.location.href ="panier.html";
@@ -125,6 +125,10 @@ if (products==null || !products || products==0) {
                 window.location.href ="panier.html";
             } )
     };
+
+
+
+    // ------------------------------------------------------------------
     // ------validation du panier et ouverture du formulaire
 
     let btnValidPanier = document.getElementById('validPanier');
@@ -183,7 +187,17 @@ if (products==null || !products || products==0) {
                 
             }
             console.log(contact);
-              
+
+        
+        // création de l'objet products contenant les id des produits du panier
+        let products = [];
+
+            for (let i = 0; i < produitpanier.length; i++){
+                // listProductStock.push(ProductSelect);
+              products.push(produitpanier[i].idProduit);     
+            }
+        console.log(products);
+           
                 // création d'un id unique pour chaque commande
                         //récupération des 3 premières lettres du nom de l'utilisateur 
                 
@@ -198,23 +212,23 @@ if (products==null || !products || products==0) {
                 let order_id =`${first}${second}${third}${date}`;
                 console.log(order_id);
                 //création de l'objet à envoyer au serveur
-                let orderTeddies = {
+                let command = {
                     order_id: order_id,
                     contact: contact,
                     products: products
                 } 
-                console.log(orderTeddies);
+                console.table(command);
 
-                // // injection de orderTeddies dans le localstorage
+                // // injection de command dans le localstorage
             
             
-                localStorage.command =JSON.stringify(orderTeddies);
+                localStorage.command =JSON.stringify(command);
             
             
             }
-        )
+        );
     }
-    )
+    );
 
 
         
