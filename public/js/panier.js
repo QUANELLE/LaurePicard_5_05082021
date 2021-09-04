@@ -213,19 +213,44 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
                 console.log(order_id);
                 //création de l'objet à envoyer au serveur
                 let command = {
-                    order_id: order_id,
+                    // order_id: order_id,
                     contact: contact,
                     products: products
                 } 
                 console.table(command);
 
-                // // injection de command dans le localstorage
+                
+                // envoi de command à l'API
+                let fetchData = {
+                    method: 'POST',
+                    body: JSON.stringify(command),
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                };
+                //   fetch("http://localhost:3000/api/teddies")
+                // 
+                
+                fetch("http://localhost:3000/api/teddies/order", fetchData)
+                //   .then(res=> console.log(res));
+                .then(res=> res.json())
+                .then(data => {
+                    console.table(data);
+                    // // injection de la réponse de l'API dans le localstorage
+                
+                
+                    localStorage.resApi =JSON.stringify(data);
+                    
+                    
+                    }                     
+                );
+                     
+                  
+                  
+                
             
+          }   
             
-                localStorage.command =JSON.stringify(command);
-            
-            
-            }
         );
     }
     );
@@ -241,4 +266,3 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
     // *   city: string,
     // *   email: string
     // * }
-    // * products: [string] <-- array of product _id
