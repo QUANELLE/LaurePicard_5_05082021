@@ -136,7 +136,7 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
 
     btnValidPanier.addEventListener("click",(e)=>{        
         // création et ouverture du formulaire
-        let form = `<form action="" method="post">
+        let form = `<form action="commande.html"  method="post">
         <h3>Veuillez remplir ce formulaire afin de valider votre commande</h3>
         <p>
         <label for="firstName">votre prénom</label>
@@ -159,11 +159,12 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
         <input type="email" name="email" id="email" required>
         </p>
         <p>
-        <label for="email">votre email</label>
+        
         <input type="submit"id="submitCommand" value="envoyer">
         </p>
         </form>`;
         formulaire.innerHTML = form;
+        // <button id="submitCommand" >Valider</button>
         console.log(formulaire);
         contenu.appendChild(formulaire);
        
@@ -175,7 +176,8 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
         console.log(btnSubmitCommand);
             
         btnSubmitCommand.addEventListener("click",(e)=>{
-            e.preventDefault();
+            // e.preventDefault();
+            
             // mettre  données du formulaire inscrites par l'utilisateur dans un objet contact
             let contact = {
                 
@@ -236,22 +238,22 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
                 .then(res=> res.json())
                 .then(data => {
                     console.table(data);
-                    // // injection de la réponse de l'API dans le localstorage
+                    // // injection de la réponse de l'API dans le localstorage               
                 
-                
-                    localStorage.resApi =JSON.stringify(data);
+                    localStorage.resApi =JSON.stringify(data);                   
                     
-                    
-                    }                     
+                }                     
                 );
-                     
-                  
-                  
                 
+                alert(`Votre commande a bien été validée`);
+                window.location.href ="commande.html";     
+                
+                
+                
+            }   
             
-          }   
-            
-        );
+            );
+        
     }
     );
 
