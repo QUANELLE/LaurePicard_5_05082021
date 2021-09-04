@@ -110,7 +110,7 @@ async function choiceProduct(c) {
         // mettre plusieurs produits dans localstorage
 
         // variable qui récupère le contenu du localStorage en JS
-        let listProductStock = JSON.parse(localStorage.getItem("produit"));
+        let listProductStock = JSON.parse(localStorage.getItem("panier"));
 
         // instructions if...else suivant si il y a déjà un produit dans le panier( et donc dans le localStorage)
 
@@ -118,12 +118,12 @@ async function choiceProduct(c) {
             listProductStock = [];
             listProductStock.push(ProductSelect);
             console.log(listProductStock);
-            localStorage.produit = JSON.stringify(listProductStock);
+            localStorage.panier = JSON.stringify(listProductStock);
 
         }
         else {
             listProductStock.push(ProductSelect);
-            localStorage.produit = JSON.stringify(listProductStock);
+            localStorage.panier = JSON.stringify(listProductStock);
             console.log(listProductStock)
 
 
