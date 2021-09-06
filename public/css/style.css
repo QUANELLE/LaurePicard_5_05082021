@@ -8,6 +8,34 @@ header, main {
 header, footer {
     background-color: rgb(243, 236, 238);
 }
+h1{
+    color: rgb(116, 33, 88);
+}
+img {
+    width: 35vh;
+    height: auto;
+    border-radius: 10%;
+}
+
+.infosFooter {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.btnsLink {
+    display: block;    
+    background-color: tan;
+    border-radius: 15px;
+    padding: 10px;
+    text-decoration:none;
+    color: rgb(116, 33, 88);
+    font-weight: bold; 
+    
+}
+
+
+/* ----------------page index------------------ */
 .contenu {
     display: flex;
     flex-direction: column;
@@ -15,11 +43,6 @@ header, footer {
     align-items: center;
     background-color: tan;
 
-}
-img {
-    width: 35vh;
-    height: auto;
-    border-radius: 10%;
 }
 .btnVoir {
     display: inline-block;
@@ -39,18 +62,9 @@ figure {
     align-items: center;
     padding: 10px;
 }
-.infosFooter {
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-}
-.boutons {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background-color: rgb(226, 199, 213);
-    align-items: stretch;
-}
+
+/* ---------------page panier------------------- */
+
 .article-panier {
 display: flex;
 justify-content: space-between;
@@ -70,14 +84,21 @@ border-radius: 10px;
     margin-bottom: 20px;
     border-radius: 10px;
 }
+.boutons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(226, 199, 213);
+    align-items: stretch;
+}
 .btnsProduit {
     display: block;    
     margin: auto;
     background-color: tan;
     border-radius: 15px;
-    padding: 4px;
-    
-}
+    border-style: none;
+   }
+
 .spanError{
     visibility: hidden;
 }
@@ -86,8 +107,3 @@ border-radius: 10px;
     border: red solid 1px;
     color: red;
 }
-/* BtnProduitPanier a {
-
-    text-decoration: none;
-    color: white !important;
-} */
