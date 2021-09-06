@@ -78,6 +78,14 @@ border-radius: 10px;
     padding: 4px;
     
 }
+.spanError{
+    visibility: hidden;
+}
+.error{
+    visibility: visible;
+    border: red solid 1px;
+    color: red;
+}
 /* BtnProduitPanier a {
 
     text-decoration: none;

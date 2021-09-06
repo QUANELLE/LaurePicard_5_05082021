@@ -88,11 +88,13 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
             // utilisation de la méthode reduce pour additionner toutes les valeurs du tableau TotalPrices    
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
             let Total = TotalPrices.reduce(reducer);
-            // console.log(Total);
+            console.log(Total);
             
             // insertion du total dans le html
             newPriceTotal.innerText = Total + " euros";
             somme.appendChild(newPriceTotal);
+            // insertion prix total dans le localStorage pour récupération en page commande
+            localStorage.prixTotal= JSON.stringify(Total);
         }
     };
     calcTotal();
@@ -120,7 +122,8 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
 
          btnViderPanier.addEventListener("click",(e) => {
                 e.preventDefault();
-                localStorage.clear();
+                localStorage.removeItem("panier");
+                localStorage.removeItem("prixTotal");
                 alert(`Votre panier a bien été vidé`);
                 window.location.href ="panier.html";
             } )
@@ -136,7 +139,7 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
 
     btnValidPanier.addEventListener("click",(e)=>{        
         // création et ouverture du formulaire
-        let form = `<form action="commande.html"  method="post">
+        let form = `<form  method="post">
         <h3>Veuillez remplir ce formulaire afin de valider votre commande</h3>
         <p>
         <label for="firstName">votre prénom</label>
@@ -157,16 +160,70 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
         <p>
         <label for="email">votre email</label>
         <input type="email" name="email" id="email" required>
+        <span class="spanError"></span>
         </p>
         <p>
         
-        <input type="submit"id="submitCommand" value="envoyer">
+        <input type="submit"id="submitCommand" value="envoyer" disabled>
         </p>
         </form>`;
         formulaire.innerHTML = form;
-        // <button id="submitCommand" >Valider</button>
         console.log(formulaire);
         contenu.appendChild(formulaire);
+
+        // -----validation du champ email-----
+        const inputEmail = document.getElementById('email');
+        const spanError = document.querySelector('.spanError');
+        const submitCommand = document.getElementById('submitCommand');
+
+            //  console.log(spanError)
+        // console.log(inputEmail);
+            // variable regex de vérification de l'email
+        const emailRegex = ("^/[\w_-]+\.[a-z]{2,4}$/i");
+
+            // fonction de vérification de l'email  
+
+        // const emailVerif = (value)=>{
+        //     if (!value.match(emailRegex)) {
+               
+        //         spanError.classList.add('error');
+        //         spanError.textContent = "rentrez un email valide";
+                
+        //     } 
+        //     else if(value.match(emailRegex)) {
+        //         spanError.classList.remove('error');
+                
+        //          spanError.textContent = "";
+        //          submitCommand.removeAttribute('disabled');
+
+                
+        //     }
+        // }
+        // déclenchement de la vérification  de l'email lors de la saisie
+        inputEmail.addEventListener("input",(e)=>{
+            // console.log(e.target.value)
+            const val= e.target.value;
+            console.log(val.match(/^[\w_-]+\.[a-z]{2,4}$/i));
+            // emailVerif(val);
+            if (val.match(emailRegex)) {
+               
+                spanError.classList.remove('error');
+                
+                 spanError.textContent = "";
+                 submitCommand.removeAttribute('disabled');
+                
+            } 
+            else  {
+                spanError.classList.add('error');
+                spanError.textContent = "rentrez un email valide";
+
+                
+            }
+
+        }
+            )
+        // REGEX fromscratch: email.match(^/[\w_-]+\.[a-z]{2,4}$/i)
+    //   regex email:  ([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?) 
        
         // -------début validation commande pour envoyer au serveur------
 
@@ -176,7 +233,7 @@ if (produitpanier==null || !produitpanier || produitpanier==0) {
         console.log(btnSubmitCommand);
             
         btnSubmitCommand.addEventListener("click",(e)=>{
-            // e.preventDefault();
+            e.preventDefault();
             
             // mettre  données du formulaire inscrites par l'utilisateur dans un objet contact
             let contact = {

@@ -88,7 +88,8 @@ async function choiceProduct(c) {
     article.appendChild(newPrice);
     article.appendChild(newForm);
 
-    // prise en compte du panier
+    // --------------prise en compte du panier-------------------------------
+    
     newBtnSubmit.addEventListener("click", (e) => {
         e.preventDefault();
         // récup choix de l'option par utilisateur
@@ -125,9 +126,8 @@ async function choiceProduct(c) {
             listProductStock.push(ProductSelect);
             localStorage.panier = JSON.stringify(listProductStock);
             console.log(listProductStock)
-
-
-        }
+                }
+         alert("Le produit a été ajouté à votre panier");       
     })
 };
 
