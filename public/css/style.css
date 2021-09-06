@@ -1,4 +1,4 @@
-footer, main {
+header, main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -44,3 +44,50 @@ figure {
     justify-content: space-around;
     align-items: stretch;
 }
+.boutons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(226, 199, 213);
+    align-items: stretch;
+}
+.article-panier {
+display: flex;
+justify-content: space-between;
+width: 60vw;
+background-color: rgb(243, 236, 238);
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 10px;
+}
+.titre-tableau, .totalPanier {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    background-color: rgb(126, 108, 84);
+    color:wheat;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.btnsProduit {
+    display: block;    
+    margin: auto;
+    background-color: tan;
+    border-radius: 15px;
+    padding: 4px;
+    
+}
+.spanError{
+    visibility: hidden;
+}
+.error{
+    visibility: visible;
+    border: red solid 1px;
+    color: red;
+}
+/* BtnProduitPanier a {
+
+    text-decoration: none;
+    color: white !important;
+} */
