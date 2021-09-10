@@ -148,113 +148,208 @@ let btnValidPanier = document.getElementById('validPanier');
 
 btnValidPanier.addEventListener("click", (e) => {
     // création et ouverture du formulaire
-    let form = `<form  method="post">
+    let form = `<form id="formValidation" method="post">
         <h3>Veuillez remplir ce formulaire afin de valider votre commande</h3>
         <p>
         <label for="firstName">votre prénom</label>
-        <input type="text" name="firstName" id="firstName" required required>
+        <input type="text" name="firstName" id="firstName" required >
+        
         </p>
         <p>
         <label for="lastName">votre nom</label>
         <input type="text" name="lastName" id="lastName" required>
+        
+        
         </p>
         <p>
         <label for="address">votre adresse </label>              
         <input type="text" name="address" id="address" required>
+        
+        
         </p>
         <p>
         <label for="city">votre ville</label>
         <input type="text" name="city" id="city" required>
+        
+        
         </p>
         <p>
         <label for="email">votre email</label>
         <input type="email" name="email" id="email" required >
-        <span class="spanError"></span>
+        <span class="emailError"></span>
         </p>
         <p>
         
-        <input type="submit"id="submitCommand" value="envoyer" disabled>
+        <input type="submit"id="submitCommand" value="envoyer" >
         </p>
+        <p id="textErreur"></p>
         </form>`;
     formulaire.innerHTML = form;
-    console.log(formulaire);
+    // console.log(formulaire);
     contenu.appendChild(formulaire);
 
-    // ---------------validation du champ email---------------
+    // ---------------validation des champs ---------------
 
-
-    const inputEmail = document.getElementById('email');
-    const spanError = document.querySelector('.spanError');
+    const formValidation = document.getElementById('formValidation');
+    const inputs = document.querySelectorAll('input[type="text"],input[type="email"]');  
+    const email = document.getElementById('email');
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const address = document.getElementById('address');
+    const city = document.getElementById('city');
+    // const firstNameError = document.querySelector('.firstNameError');
+    // const lastNameError = document.querySelector('.lastNameError');
+    // const addressError = document.querySelector('.addressError');
+    // const cityError = document.querySelector('.cityError');
+    const emailError = document.querySelector('.emailError');
     const submitCommand = document.getElementById('submitCommand');
+    const textErreur = document.getElementById('textErreur');
+    // console.log(formValidation);
 
 
-    // variable regex de vérification de l'email
-    const emailRegex = (/^[\w_-]+@[a-z]+\.[a-z]{2,10}$/i);
+//     const validationCommand = (e)=> {
+//         // e.preventDefault();
+        
+//         // injection données du formulaire inscrites par l'utilisateur dans un objet contact
+//         let contact = {
+//             firstName: document.getElementById('firstName').value,
+//             lastName: document.getElementById('lastName').value,
+//             address: document.getElementById('address').value,
+//             city: document.getElementById('city').value,
+//                 email: document.getElementById('email').value
+//             }
+//             // console.log(contact);
+            
+            
+//             // création de l'objet products contenant les id des produits du panier
+//             let products = [];
+            
+//             for (let i = 0; i < produitpanier.length; i++) {
+//                 // listProductStock.push(ProductSelect);
+//                 products.push(produitpanier[i].idProduit);
+//             }
+//             console.log(products);
+            
+            
+//             //création de l'objet à envoyer au serveur
+//             let command = {
+//                 contact: contact,
+//                 products: products
+//             }
+//             console.table(command);
+            
+            
+//             // ------------------envoi de l'objet "command" à l'API----------------------------
+//             let fetchData = {
+//                 method: 'POST',
+//                 body: JSON.stringify(command),
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 }
+//             };
+            
+//             fetch("http://localhost:3000/api/teddies/order", fetchData)
+//             //   .then(res=> console.log(res));
+//             .then(res => res.json())
+//             .then(data => {
+//                 console.table(data);
+                
+//                 //------- injection de la réponse de l'API dans le localstorage -------             
+                
+//                 localStorage.resApi = JSON.stringify(data);
+//             }
+//             );
+//             //message de validation et redirection vers page commande.html 
+//             alert(`Votre commande a bien été validée`);
+//             window.location.href = "commande.html";
+//         };
+
+//     document.forms['formValidation'].addEventListener('submit', (e)=>{
+//         let erreur;
+
+//         // variable regex de vérification de l'email
+//     const emailRegex = (/^[\w_-]+@[a-z]+\.[a-z]{2,10}$/i);
+//         if (!email.value.match(emailRegex)) {
+//            erreur= "rentrez un email valide";
+//         //    break;
+//         };
+        
+//         // fonction de vérification  des champs remplis
+//         inputs.forEach((input) =>{
+//             if (!input.value) {
+//                 erreur= "Veuillez remplir tous les champs";
+//                 // break;
+//             }
+//         });
+//         if (erreur) {
+//             e.preventDefault();
+//             textErreur.innerText = erreur;
+//             return false;
+
+            
+//         } else {
+
+//             validationCommand();
+//         }
+//     });
+// });
 
 
-    // déclenchement de la vérification  de l'email lors de la saisie
 
-    inputEmail.addEventListener("input", (e) => {
-        // console.log(e.target.value)
-        const val = e.target.value;
-        // console.log(val.match(emailRegex));
-
-        // fonction de vérification de l'email 
-        if (val.match(emailRegex)) {
-
-            spanError.classList.remove('error');
-            spanError.textContent = "";
-            submitCommand.removeAttribute('disabled');
-
-        }
-        else {
-            spanError.classList.add('error');
-            spanError.textContent = "rentrez un email valide";
-        }
-    }
-    )
+   
 
 
-    // ---------------- validation commande pour envoyer au serveur------------
 
 
-    // récupération des données du formulaire au click de validation
 
-    let btnSubmitCommand = document.getElementById('submitCommand');
-    console.log(btnSubmitCommand);
 
-    btnSubmitCommand.addEventListener("click", (e) => {
-        e.preventDefault();
 
-        // injection données du formulaire inscrites par l'utilisateur dans un objet contact
-        let contact = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            address: document.getElementById('address').value,
-            city: document.getElementById('city').value,
+
+
+
+
+// ---------------- validation commande pour envoyer au serveur------------
+
+
+// récupération des données du formulaire au click de validation
+
+let btnSubmitCommand = document.getElementById('submitCommand');
+console.log(btnSubmitCommand);
+
+// btnSubmitCommand.addEventListener("click", (e) => {
+    // // const validationCommand = (e)=> {
+        document.forms['formValidation'].addEventListener('submit', (e)=>{
+    e.preventDefault();
+    
+    // injection données du formulaire inscrites par l'utilisateur dans un objet contact
+    let contact = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
             email: document.getElementById('email').value
         }
         // console.log(contact);
-
-
+        
+        
         // création de l'objet products contenant les id des produits du panier
         let products = [];
-
+        
         for (let i = 0; i < produitpanier.length; i++) {
             // listProductStock.push(ProductSelect);
             products.push(produitpanier[i].idProduit);
         }
         console.log(products);
-
-
+        
+        
         //création de l'objet à envoyer au serveur
         let command = {
             contact: contact,
             products: products
         }
         console.table(command);
-
-
+        
+        
         // ------------------envoi de l'objet "command" à l'API----------------------------
         let fetchData = {
             method: 'POST',
@@ -263,18 +358,18 @@ btnValidPanier.addEventListener("click", (e) => {
                 "Content-Type": "application/json"
             }
         };
-
+        
         fetch("http://localhost:3000/api/teddies/order", fetchData)
-            //   .then(res=> console.log(res));
-            .then(res => res.json())
-            .then(data => {
-                console.table(data);
-
-         //------- injection de la réponse de l'API dans le localstorage -------             
-
-                localStorage.resApi = JSON.stringify(data);
-            }
-            );
+        //   .then(res=> console.log(res));
+        .then(res => res.json())
+        .then(data => {
+            console.table(data);
+            
+            //------- injection de la réponse de l'API dans le localstorage -------             
+            
+            localStorage.resApi = JSON.stringify(data);
+        }
+        );
         //message de validation et redirection vers page commande.html 
         alert(`Votre commande a bien été validée`);
         window.location.href = "commande.html";
@@ -285,12 +380,77 @@ btnValidPanier.addEventListener("click", (e) => {
 
 
 
-    // ___________format attendu_______________
-    // Expects request to contain:
-    // * contact: {
+// ___________format attendu_______________
+// Expects request to contain:
+// * contact: {
     // *   firstName: string,
     // *   lastName: string,
     // *   address: string,
     // *   city: string,
     // *   email: string
+
+
+
+
+ // // variable regex de vérification de l'email
+    // const emailRegex = (/^[\w_-]+@[a-z]+\.[a-z]{2,10}$/i);
+
+    // fonction de vérification de l'email 
+//     const emailTest = (val) =>{       
+
+//     if (val.match(emailRegex)) {
+//         // submitCommand.removeAttribute('disabled');
+//         emailError.classList.remove('error');
+//         emailError.textContent = "";
+//         // return true;
+        
+//     }
+//     else {
+//         emailError.classList.add('error');
+//         emailError.textContent = "rentrez un email valide";
+//         // submitCommand.setAttribute('disabled');
+//     }
+// }
+ 
+// email.addEventListener("input", (e) => {
+//     const val = e.target.value;
+//     // console.log(val.match(emailRegex));
+//     emailTest(val);
+   
+// }
+// )
+
+
+
+
+    // déclenchement de la vérification  des champs du formulaire lors de la saisie
+    // inputs.forEach((input) =>{
+    
+    //     input.addEventListener("input",(e) => {
+    //         console.log(e.target.type)
+    //         switch (e.target.id) {
+    //             case "firstName":
+    //                 textTest(firstName, e.target.value);
+                    
+    //                 break;
+    //             case "lastName":
+    //                 textTest(lastName,e.target.value);
+    //                 break;
+    //             case "address":
+    //                 textTest(address,e.target.value);
+    //                 break;
+    //             case "city":
+    //                 textTest(city,e.target.value);
+    //                 break;
+    //             case "email":
+    //                 emailTest(e.target.value)
+    //                 break;
+            
+    //             default:
+    //                 null
+    //                 break;
+    //         }
+            
+    //     })
+    // })
     // * }

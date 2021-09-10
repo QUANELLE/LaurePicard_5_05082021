@@ -107,3 +107,9 @@ border-radius: 10px;
     border: red solid 1px;
     color: red;
 }
+input:required:valid {
+    border-color: green;
+  }
+  input:required:invalid {
+    border-color: red;
+  }
