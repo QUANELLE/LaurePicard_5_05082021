@@ -1,15 +1,13 @@
 "use strict";
 const liste = document.querySelector('.liste');
 
-
 // fonction asynchrone pour afficher liste des articles
-
 async function listArticles(i) {
     // appel à l'API
     const response = await fetch("http://localhost:3000/api/teddies");
     
     const data = await response.json();
-    // console.log(data);
+    
     // boucle itérative pour afficher chaque article
         for(i=0; i<data.length; i++){
             // creation sous forme de variables des éléments à injecter dans le DOM
@@ -20,11 +18,10 @@ async function listArticles(i) {
             let newLink = document.createElement('a');
             
             // récupération de l'url de l'image
-            let url = data[i].imageUrl;
+            const url = data[i].imageUrl;
             // récupération de l'id
-            let id = data[i]._id;
-            // console.log(id);
-            
+            const id = data[i]._id;
+                        
             // récupération des données de l'API à injecter dans les variables
             newName.innerText =data[i].name;
             newPhoto.src = url;
@@ -33,8 +30,7 @@ async function listArticles(i) {
             newLink.innerText = "Voir cet article";
             newLink.classList = "btnVoir";
             
-            // insertion des éléments dans les Div
-            
+            // insertion des éléments dans les Div            
             newArticle.appendChild(newName);
             newArticle.appendChild(newPhoto);
             newArticle.appendChild(newPrice);

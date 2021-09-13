@@ -4,23 +4,13 @@ const article = document.querySelector('.article');
 
 // -----Récupération de l'Id du produit sélectionné en page index----
 
-// let urlProduit = window.location.href;
-// console.log(urlProduit);
-// let urlId = window.location.search;
-// console.log(urlId);
-
 let params = new URL(window.location.href).searchParams;
-// console.log(params);
 let id = params.get('id');
-console.log(id);
 
-async function choiceProduct(c) {
+async function choiceProduct() {
     // appel à l'API
     const response = await fetch(`http://localhost:3000/api/teddies/${id}`);
-
-    const data = await response.json();
-    console.log(data);
-
+    const data = await response.json();   
 
     // creation sous forme de variables des éléments à injecter dans le DOM
     let newName = document.createElement('h2');
@@ -35,9 +25,7 @@ async function choiceProduct(c) {
 
     // récupération de l'url de l'image
     let url = data.imageUrl;
-    // console.log(url);
-
-
+    
     // récupération tableau couleurs
     let colors = data.colors;
     // console.log(colors);
@@ -49,37 +37,25 @@ async function choiceProduct(c) {
     newSelect.id = "couleurs";
     newBtnSubmit.type = "submit";
     newBtnSubmit.name = "couleurs[]";
+    newBtnSubmit.value = "Acheter";    
 
-    newBtnSubmit.value = "Acheter";
-    console.log(newBtnSubmit);
-    console.log(newSelect);
-
-
-    // boucle iteration pour les options 
-
+    // boucle iteration pour les options couleurs
+    let c;
     for (c = 0; c < colors.length; c++) {
-
         selectOption += `<option value="${colors[c]}">${colors[c]}</option>`;
-
         newSelect.innerHTML = selectOption;
-
     }
-    console.log(selectOption);
-
-
-
+   
     // création formulaire en y injectant balises html
     newForm.appendChild(newLabel);
     newForm.appendChild(newSelect);
-    newForm.appendChild(newBtnSubmit);
-    // console.log(newForm);
+    newForm.appendChild(newBtnSubmit);    
 
     // récupération des données de l'API à injecter dans les variables
     newPhoto.src = url;
     newName.innerText = data.name;
     newPrice.innerText = "prix: " + data.price / 100 + " euros";
     newDescription.innerText = data.description;
-
 
     // insertion des éléments dans l'article
     article.appendChild(newName);
@@ -96,18 +72,14 @@ async function choiceProduct(c) {
         let select = document.querySelector('select');
         let colorSelect = select.value;
 
-
         // récupération du produit sélectionné par l'utilisateur
-
         let ProductSelect = {
             idProduit: data._id,
             nomProduit: data.name,
             prix: data.price / 100,
             choixCouleur: colorSelect
         };
-        console.log(ProductSelect);
-
-
+     
         // mettre plusieurs produits dans localstorage
 
         // variable qui récupère le contenu du localStorage en JS
@@ -117,15 +89,12 @@ async function choiceProduct(c) {
 
         if (!listProductStock) {
             listProductStock = [];
-            listProductStock.push(ProductSelect);
-            console.log(listProductStock);
+            listProductStock.push(ProductSelect);           
             localStorage.panier = JSON.stringify(listProductStock);
-
         }
         else {
             listProductStock.push(ProductSelect);
-            localStorage.panier = JSON.stringify(listProductStock);
-            console.log(listProductStock)
+            localStorage.panier = JSON.stringify(listProductStock);           
                 }
          alert("Le produit a été ajouté à votre panier");       
     })

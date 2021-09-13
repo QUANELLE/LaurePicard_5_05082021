@@ -10,14 +10,12 @@ let contenu = document.querySelector('.contenu');
 let btnViderPanier = document.getElementById('btnViderPanier');
 let sectionBtns = document.querySelector('.boutons');
 let formulaire = document.querySelector('.formulaire');
-// console.log(formulaire);
 
 
 // récup produit stocké dans le localStorage et transformation du json en objet JS(tableau)
 let produitpanier = JSON.parse(localStorage.getItem("panier"));
-// console.log(produitpanier);
-if (produitpanier == null || !produitpanier || produitpanier == 0) {
 
+if (!produitpanier) {
     // insertion message si panier vide
     titre.innerText = "Votre panier est vide";
     tableau.style.display = "none";
@@ -28,10 +26,9 @@ if (produitpanier == null || !produitpanier || produitpanier == 0) {
     // ---------------insertion des éléments dans le html du panier-----------------
 
     const insertElsPanier = () => {
-
         for (let i = 0; i < produitpanier.length; i++) {
-            // creation sous forme de variables des éléments à injecter dans le DOM
 
+            // creation sous forme de variables des éléments à injecter dans le DOM
             let newArticle = document.createElement('tr');
             let newName = document.createElement('td');
             let newColor = document.createElement('td');
@@ -39,29 +36,24 @@ if (produitpanier == null || !produitpanier || produitpanier == 0) {
             let newBtnSupprProd = document.createElement('td');
 
             // Données  à injecter dans les variables
-
             newName.innerText = produitpanier[i].nomProduit;
             newPrice.innerText = produitpanier[i].prix + " euros";
             newColor.innerText = produitpanier[i].choixCouleur;
             newBtnSupprProd.innerHTML = '<button class="BtnSupprProd">Supprimer du panier</button>';
 
             // classes css dans variables
-
             newArticle.classList = "article-panier";
             newName.classList = "nom";
             newPrice.classList = "prix";
             newColor.classList = "couleur";
 
-
             // insertion des éléments dans chaque ligne d'article
-
             newArticle.appendChild(newName);
             newArticle.appendChild(newColor);
             newArticle.appendChild(newPrice);
             newArticle.appendChild(newBtnSupprProd);
 
             // ajout de chaqueligne d'article dans le tableau
-
             tBody.appendChild(newArticle);
         }
     }
@@ -84,13 +76,11 @@ if (produitpanier == null || !produitpanier || produitpanier == 0) {
             let priceItem = produitpanier[i].prix;
 
             // insertion de chaque prix dans le tableau TotalPrices  
-            TotalPrices.push(priceItem);
-            // console.log(TotalPrices);
+            TotalPrices.push(priceItem);            
 
             // utilisation de la méthode reduce pour additionner toutes les valeurs du tableau TotalPrices    
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
-            let Total = TotalPrices.reduce(reducer);
-            console.log(Total);
+            let Total = TotalPrices.reduce(reducer);           
 
             // insertion du total dans le html
             newPriceTotal.innerText = Total + " euros";
@@ -108,14 +98,12 @@ if (produitpanier == null || !produitpanier || produitpanier == 0) {
     let AllBtnSupprProd = document.querySelectorAll(".BtnSupprProd");
 
     //    Boucle pour itérer sur les boutons
-
     for (let b = 0; b < AllBtnSupprProd.length; b++) {
         // sélection du bouton "supprimer du panier "
         AllBtnSupprProd[b].addEventListener("click", (e) => {
             e.preventDefault();
             // Suppression du produit en le selectionnant par son index dans le tableau produitpanier       
-            produitpanier.splice(b, 1);
-            // console.log(produitpanier);
+            produitpanier.splice(b, 1);            
 
             // injection du nouveau panier dans le localStorage
             localStorage.panier = JSON.stringify(produitpanier);
@@ -176,148 +164,25 @@ btnValidPanier.addEventListener("click", (e) => {
         <p>
         <label for="email">votre email</label>
         <input type="email" name="email" id="email" required >
-        <span class="emailError"></span>
+        
         </p>
         <p>
         
         <input type="submit"id="submitCommand" value="envoyer" >
         </p>
-        <p id="textErreur"></p>
+        
         </form>`;
-    formulaire.innerHTML = form;
-    // console.log(formulaire);
-    contenu.appendChild(formulaire);
-
-    // ---------------validation des champs ---------------
-
+    formulaire.innerHTML = form;   
+    contenu.appendChild(formulaire);    
+    
+    
+    // ---------------- validation commande pour envoyer au serveur------------
+    
+    
+    // récupération des données du formulaire au click de validation
+    
     const formValidation = document.getElementById('formValidation');
-    const inputs = document.querySelectorAll('input[type="text"],input[type="email"]');  
-    const email = document.getElementById('email');
-    const firstName = document.getElementById('firstName');
-    const lastName = document.getElementById('lastName');
-    const address = document.getElementById('address');
-    const city = document.getElementById('city');
-    // const firstNameError = document.querySelector('.firstNameError');
-    // const lastNameError = document.querySelector('.lastNameError');
-    // const addressError = document.querySelector('.addressError');
-    // const cityError = document.querySelector('.cityError');
-    const emailError = document.querySelector('.emailError');
-    const submitCommand = document.getElementById('submitCommand');
-    const textErreur = document.getElementById('textErreur');
-    // console.log(formValidation);
 
-
-//     const validationCommand = (e)=> {
-//         // e.preventDefault();
-        
-//         // injection données du formulaire inscrites par l'utilisateur dans un objet contact
-//         let contact = {
-//             firstName: document.getElementById('firstName').value,
-//             lastName: document.getElementById('lastName').value,
-//             address: document.getElementById('address').value,
-//             city: document.getElementById('city').value,
-//                 email: document.getElementById('email').value
-//             }
-//             // console.log(contact);
-            
-            
-//             // création de l'objet products contenant les id des produits du panier
-//             let products = [];
-            
-//             for (let i = 0; i < produitpanier.length; i++) {
-//                 // listProductStock.push(ProductSelect);
-//                 products.push(produitpanier[i].idProduit);
-//             }
-//             console.log(products);
-            
-            
-//             //création de l'objet à envoyer au serveur
-//             let command = {
-//                 contact: contact,
-//                 products: products
-//             }
-//             console.table(command);
-            
-            
-//             // ------------------envoi de l'objet "command" à l'API----------------------------
-//             let fetchData = {
-//                 method: 'POST',
-//                 body: JSON.stringify(command),
-//                 headers: {
-//                     "Content-Type": "application/json"
-//                 }
-//             };
-            
-//             fetch("http://localhost:3000/api/teddies/order", fetchData)
-//             //   .then(res=> console.log(res));
-//             .then(res => res.json())
-//             .then(data => {
-//                 console.table(data);
-                
-//                 //------- injection de la réponse de l'API dans le localstorage -------             
-                
-//                 localStorage.resApi = JSON.stringify(data);
-//             }
-//             );
-//             //message de validation et redirection vers page commande.html 
-//             alert(`Votre commande a bien été validée`);
-//             window.location.href = "commande.html";
-//         };
-
-//     document.forms['formValidation'].addEventListener('submit', (e)=>{
-//         let erreur;
-
-//         // variable regex de vérification de l'email
-//     const emailRegex = (/^[\w_-]+@[a-z]+\.[a-z]{2,10}$/i);
-//         if (!email.value.match(emailRegex)) {
-//            erreur= "rentrez un email valide";
-//         //    break;
-//         };
-        
-//         // fonction de vérification  des champs remplis
-//         inputs.forEach((input) =>{
-//             if (!input.value) {
-//                 erreur= "Veuillez remplir tous les champs";
-//                 // break;
-//             }
-//         });
-//         if (erreur) {
-//             e.preventDefault();
-//             textErreur.innerText = erreur;
-//             return false;
-
-            
-//         } else {
-
-//             validationCommand();
-//         }
-//     });
-// });
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-// ---------------- validation commande pour envoyer au serveur------------
-
-
-// récupération des données du formulaire au click de validation
-
-let btnSubmitCommand = document.getElementById('submitCommand');
-console.log(btnSubmitCommand);
-
-// btnSubmitCommand.addEventListener("click", (e) => {
-    // // const validationCommand = (e)=> {
         document.forms['formValidation'].addEventListener('submit', (e)=>{
     e.preventDefault();
     
@@ -329,7 +194,6 @@ console.log(btnSubmitCommand);
         city: document.getElementById('city').value,
             email: document.getElementById('email').value
         }
-        // console.log(contact);
         
         
         // création de l'objet products contenant les id des produits du panier
@@ -347,8 +211,7 @@ console.log(btnSubmitCommand);
             contact: contact,
             products: products
         }
-        console.table(command);
-        
+              
         
         // ------------------envoi de l'objet "command" à l'API----------------------------
         let fetchData = {
@@ -377,80 +240,3 @@ console.log(btnSubmitCommand);
     );
 }
 );
-
-
-
-// ___________format attendu_______________
-// Expects request to contain:
-// * contact: {
-    // *   firstName: string,
-    // *   lastName: string,
-    // *   address: string,
-    // *   city: string,
-    // *   email: string
-
-
-
-
- // // variable regex de vérification de l'email
-    // const emailRegex = (/^[\w_-]+@[a-z]+\.[a-z]{2,10}$/i);
-
-    // fonction de vérification de l'email 
-//     const emailTest = (val) =>{       
-
-//     if (val.match(emailRegex)) {
-//         // submitCommand.removeAttribute('disabled');
-//         emailError.classList.remove('error');
-//         emailError.textContent = "";
-//         // return true;
-        
-//     }
-//     else {
-//         emailError.classList.add('error');
-//         emailError.textContent = "rentrez un email valide";
-//         // submitCommand.setAttribute('disabled');
-//     }
-// }
- 
-// email.addEventListener("input", (e) => {
-//     const val = e.target.value;
-//     // console.log(val.match(emailRegex));
-//     emailTest(val);
-   
-// }
-// )
-
-
-
-
-    // déclenchement de la vérification  des champs du formulaire lors de la saisie
-    // inputs.forEach((input) =>{
-    
-    //     input.addEventListener("input",(e) => {
-    //         console.log(e.target.type)
-    //         switch (e.target.id) {
-    //             case "firstName":
-    //                 textTest(firstName, e.target.value);
-                    
-    //                 break;
-    //             case "lastName":
-    //                 textTest(lastName,e.target.value);
-    //                 break;
-    //             case "address":
-    //                 textTest(address,e.target.value);
-    //                 break;
-    //             case "city":
-    //                 textTest(city,e.target.value);
-    //                 break;
-    //             case "email":
-    //                 emailTest(e.target.value)
-    //                 break;
-            
-    //             default:
-    //                 null
-    //                 break;
-    //         }
-            
-    //     })
-    // })
-    // * }

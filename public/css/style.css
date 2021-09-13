@@ -1,3 +1,16 @@
+body {
+    /* margin: 30px; */
+    box-sizing: border-box;
+    background-color: rgb(243, 236, 238);
+    font-family:cursive;
+  }
+  .bloc-page{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 90vh;
+      background-color: tan;
+  }
 header, main {
     display: flex;
     justify-content: space-evenly;
@@ -6,8 +19,17 @@ header, main {
     
 }
 header, footer {
+    
+    width: 100vw;
     background-color: rgb(243, 236, 238);
+    margin: auto;
+    padding: 10px;
 }
+header img{
+    width: 10vw;
+    height: auto;
+}
+
 h1{
     color: rgb(116, 33, 88);
 }
@@ -17,11 +39,7 @@ img {
     border-radius: 10%;
 }
 
-.infosFooter {
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-}
+
 
 .btnsLink {
     display: block;    
@@ -42,8 +60,10 @@ img {
     justify-content: center;
     align-items: center;
     background-color: tan;
+    padding: 30px;
 
 }
+
 .btnVoir {
     display: inline-block;
    border-radius: 10%;
@@ -63,6 +83,16 @@ figure {
     padding: 10px;
 }
 
+
+/* ----page produit */
+/* .article img{
+ align-self: start; 
+ margin-left: 30px;  
+} */
+/* .article p{
+ align-self:flex-end;
+ margin-right: 30px;  
+} */
 /* ---------------page panier------------------- */
 
 .article-panier {
@@ -86,30 +116,60 @@ border-radius: 10px;
 }
 .boutons {
     display: flex;
+    
     justify-content: center;
+    /* margin: 30px; */
     padding: 20px;
     background-color: rgb(226, 199, 213);
     align-items: stretch;
 }
+.boutons-panier{
+    width: 60vw;
+
+}
 .btnsProduit {
     display: block;    
-    margin: auto;
+    margin: auto 20px;
     background-color: tan;
     border-radius: 15px;
     border-style: none;
    }
 
-.spanError{
-    visibility: hidden;
-}
-.error{
+
+/* .error{
     visibility: visible;
     border: red solid 1px;
     color: red;
-}
+} */
 input:required:valid {
     border-color: green;
   }
   input:required:invalid {
     border-color: red;
   }
+
+  /* ---------------Footer */
+  footer {
+    /* box-sizing: border-box; */
+    /* position: fixed;
+    bottom: 0; */
+    /* width: 100vw; */
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+   /* height: 5vh; */
+    /* padding: 20px 40px;
+    margin: 40px auto 0 auto; */
+  }
+  /* page commande */
+  #main-commande {
+      margin:auto;
+      background-color: tan;
+  }
+  #message{
+      color: rgb(116, 33, 88); 
+      width: 60%;
+      font-size: 2rem;
+      line-height: 200%;
+      }
