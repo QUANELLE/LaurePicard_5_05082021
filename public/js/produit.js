@@ -37,7 +37,10 @@ async function choiceProduct() {
     newSelect.id = "couleurs";
     newBtnSubmit.type = "submit";
     newBtnSubmit.name = "couleurs[]";
-    newBtnSubmit.value = "Acheter";    
+    newBtnSubmit.value = "Acheter";
+    newBtnSubmit.className = "btnAcheter";
+    newPrice.className = "prix"; 
+    newForm.className = "form-prod";   
 
     // boucle iteration pour les options couleurs
     let c;

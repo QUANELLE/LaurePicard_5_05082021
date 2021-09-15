@@ -39,7 +39,7 @@ if (!produitpanier) {
             newName.innerText = produitpanier[i].nomProduit;
             newPrice.innerText = produitpanier[i].prix + " euros";
             newColor.innerText = produitpanier[i].choixCouleur;
-            newBtnSupprProd.innerHTML = '<button class="BtnSupprProd">Supprimer du panier</button>';
+            newBtnSupprProd.innerHTML = '<button class="BtnSupprProd btnsLink">Supprimer du panier</button>';
 
             // classes css dans variables
             newArticle.classList = "article-panier";
@@ -139,30 +139,30 @@ btnValidPanier.addEventListener("click", (e) => {
     let form = `<form id="formValidation" method="post">
         <h3>Veuillez remplir ce formulaire afin de valider votre commande</h3>
         <p>
-        <label for="firstName">votre prénom</label>
+        <label for="firstName">votre prénom</label><br>
         <input type="text" name="firstName" id="firstName" required >
         
         </p>
         <p>
-        <label for="lastName">votre nom</label>
+        <label for="lastName">votre nom</label><br>
         <input type="text" name="lastName" id="lastName" required>
         
         
         </p>
         <p>
-        <label for="address">votre adresse </label>              
+        <label for="address">votre adresse </label> <br>             
         <input type="text" name="address" id="address" required>
         
         
         </p>
         <p>
-        <label for="city">votre ville</label>
+        <label for="city">votre ville</label><br>
         <input type="text" name="city" id="city" required>
         
         
         </p>
         <p>
-        <label for="email">votre email</label>
+        <label for="email">votre email</label><br>
         <input type="email" name="email" id="email" required >
         
         </p>
@@ -173,7 +173,9 @@ btnValidPanier.addEventListener("click", (e) => {
         
         </form>`;
     formulaire.innerHTML = form;   
-    contenu.appendChild(formulaire);    
+    contenu.appendChild(formulaire); 
+    // mettre le curseur sur le 1er champ du formulaire
+    firstName.focus();   
     
     
     // ---------------- validation commande pour envoyer au serveur------------

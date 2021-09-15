@@ -26,6 +26,7 @@ async function listArticles(i) {
             newName.innerText =data[i].name;
             newPhoto.src = url;
             newPrice.innerText = data[i].price/100+" euros";
+            newPrice.className = "prix";
             newLink.href = `./vues/produit.html?id=${id}`;
             newLink.innerText = "Voir cet article";
             newLink.classList = "btnVoir";
