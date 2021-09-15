@@ -1,92 +1,73 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier</title>
-    <!-- <link rel="icon" href="img/favicon.ico" type="image/x-icon"> -->
-
-    <!-- preload -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style">
-    <link rel="preload" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" as="style">
-    <link rel="preload" href="/public/css/style.css" as="style">
-
-    
-    <meta name="description"  content="Site Orinoco">
-    <meta name="author"       content="Laure Picard">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-
-    <link rel="stylesheet" href="/public/css/style.css">
-</head>
-<body>
-    <div class="bloc-page">
-
-        <header>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Panier</title>
+      <!-- <link rel="icon" href="img/favicon.ico" type="image/x-icon"> -->
+      <!-- preload -->
+      <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style">
+      <link rel="preload" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" as="style">
+      <link rel="preload" href="/public/css/style.css" as="style">
+      <meta name="description"  content="Site Orinoco">
+      <meta name="author"       content="Laure Picard">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+      <link rel="stylesheet" href="/public/css/style.css">
+   </head>
+   <body>
+      <div class="bloc-page">
+         <header>
             <a href="/public/index.html">
-                <img src="/images/logo-orinoco-large.jpg" alt="logo" id="logo">
+            <img src="/images/logo-orinoco-large.jpg" alt="logo" id="logo">
             </a>
             <h1>ORINOPELUCHES:
-                <br> Création d'ours en peluche faits main</h1>
-            <a href="/public/index.html" class="btnsLink">Continuer vos achats</a>
-            
-            
-        </header>
-        <main class="contenu">
+               <br> Création d'ours en peluche faits main
+            </h1>
+            <a href="/public/index.html" class="btnsLink">Continuer vos achats<i class="fas fa-cart-plus"></i></a>
+         </header>
+         <main class="contenu">
             <h2>Voici votre panier</h2>
             <table >
-                <tBody class="contenu-panier">
-                    <tr class="titre-tableau">
-                        
-                        <th>Nom</th>
-                        <th>Couleur</th>
-                        <th>Prix</th>
-                        <th>           </th>
-                    </tr>
-                    
-                </tBody>
-                <tfoot >
-                    
-                    <tr class="totalPanier">
-                        
-                        <td >Total panier</td>
-                        <td ></td>
-                        <td class="somme"></td>
-                        <td>               </td>
-                    </tr> 
-                </tfoot>
+               <tBody class="contenu-panier">
+                  <tr class="titre-tableau">
+                     <th>Nom</th>
+                     <th>Couleur</th>
+                     <th>Prix</th>
+                     <th>           </th>
+                  </tr>
+               </tBody>
+               <tfoot >
+                  <tr class="totalPanier">
+                     <td >Total panier</td>
+                     <td ></td>
+                     <td class="somme"></td>
+                     <td>               </td>
+                  </tr>
+               </tfoot>
             </table>
-            
             <section class="boutons boutons-panier ">
-                <button id="btnViderPanier" class="btnsProduit btnsLink">Vider mon panier</button>
-                <button id="validPanier" class="btnsProduit btnsLink">Valider mon panier et passer commande</button>
-                
+               <button id="btnViderPanier" class="btnsProduit btnsLink">Vider mon panier</button>
+               <button id="validPanier" class="btnsProduit btnsLink">Valider mon panier et passer commande</button>
             </section>
             <section class="formulaire">           
             </section>
-            
-        </main>
-        <footer>
-            
-            
+         </main>
+         <footer>
             <a href="#" class="services">
-                <h3>Services et garanties</h3>
-                
+               <h3>Services et garanties</h3>
             </a>
             <a href="#" class="contact">
-                <h3>Contacts</h3>
-                
-            </a> 
-            <a href="#" class="legales">
-                <h3>Informations légales</h3>
-                
+               <h3>Contacts</h3>
             </a>
-            
-            
-        </footer>
-    </div>
-  <script src="/public/js/panier.js"></script>  
-</body>
+            <a href="#" class="legales">
+               <h3>Informations légales</h3>
+            </a>
+         </footer>
+      </div>
+      <script src="/public/js/panier.js"></script>  
+   </body>
 </html>
+
