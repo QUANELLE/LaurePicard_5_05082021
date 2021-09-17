@@ -6,8 +6,8 @@
 
 let tBody = document.querySelector('tBody');
 let sum = document.querySelector('.sum');
-let titre = document.querySelector('h2');
-let tableau = document.querySelector('table');
+let title = document.querySelector('h2');
+let table = document.querySelector('table');
 let container = document.querySelector('.container');
 let btnEmptyBasket = document.getElementById('btnEmptyBasket');
 let sectionBtns = document.querySelector('.buttons');
@@ -15,20 +15,20 @@ let registrationform = document.querySelector('.registrationform');
 
 
 // récup produit stocké dans le localStorage et transformation du json en objet JS(tableau)
-let produitpanier = JSON.parse(localStorage.getItem("panier"));
+let productbasket = JSON.parse(localStorage.getItem("panier"));
 
-if (!produitpanier) {
+if (!productbasket) {
 	// insertion message si panier vide
-	titre.innerText = "Votre panier est vide";
-	tableau.style.display = "none";
+	title.innerText = "Votre panier est vide";
+	table.style.display = "none";
 	sectionBtns.style.display = "none";
 
 } else {
 
 	// ---------------insertion des éléments dans le html du panier-----------------
 
-	const insertElsPanier = () => {
-		for (let i = 0; i < produitpanier.length; i++) {
+	const insertElsBasket = () => {
+		for (let i = 0; i < productbasket.length; i++) {
 
 			// creation sous forme de variables des éléments à injecter dans le DOM
 			let newArticle = document.createElement('tr');
@@ -38,9 +38,9 @@ if (!produitpanier) {
 			let newBtnSupprProd = document.createElement('td');
 
 			// Données  à injecter dans les variables
-			newName.innerText = produitpanier[i].nomProduit;
-			newPrice.innerText = produitpanier[i].prix + " euros";
-			newColor.innerText = produitpanier[i].choixCouleur;
+			newName.innerText = productbasket[i].nomProduit;
+			newPrice.innerText = productbasket[i].prix + " euros";
+			newColor.innerText = productbasket[i].choixCouleur;
 			newBtnSupprProd.innerHTML = '<button class="BtnSupprProd btnsLink">Supprimer du panier</button>';
 
 			// classes css dans variables
@@ -59,7 +59,7 @@ if (!produitpanier) {
 			tBody.appendChild(newArticle);
 		}
 	}
-	insertElsPanier();
+	insertElsBasket();
 
 	//----------------- prix total du panier--------------------------
 
@@ -73,9 +73,9 @@ if (!produitpanier) {
 	const calcTotal = () => {
 
 		// boucle pour récupérer les prix du panier et en faire leur somme
-		for (let i = 0; i < produitpanier.length; i++) {
+		for (let i = 0; i < productbasket.length; i++) {
 			// récup de chaque prix du panier    
-			let priceItem = produitpanier[i].prix;
+			let priceItem = productbasket[i].prix;
 
 			// insertion de chaque prix dans le tableau TotalPrices  
 			TotalPrices.push(priceItem);
@@ -104,11 +104,11 @@ if (!produitpanier) {
 		// sélection du bouton "supprimer du panier "
 		AllBtnSupprProd[b].addEventListener("click", (e) => {
 			e.preventDefault();
-			// Suppression du produit en le selectionnant par son index dans le tableau produitpanier       
-			produitpanier.splice(b, 1);
+			// Suppression du produit en le selectionnant par son index dans le tableau productbasket       
+			productbasket.splice(b, 1);
 
 			// injection du nouveau panier dans le localStorage
-			localStorage.panier = JSON.stringify(produitpanier);
+			localStorage.panier = JSON.stringify(productbasket);
 
 			// alerte pour l'utilisateur et rechargement de la page
 			alert(`Votre produit a bien été supprimé du panier`);
@@ -188,8 +188,8 @@ btnValidBasket.addEventListener("click", (e) => {
 		// création de l'objet products contenant les id des produits du panier
 		let products = [];
 
-		for (let i = 0; i < produitpanier.length; i++) {
-			products.push(produitpanier[i].idProduit);
+		for (let i = 0; i < productbasket.length; i++) {
+			products.push(productbasket[i].idProduit);
 		}
 		console.log(products);
 
