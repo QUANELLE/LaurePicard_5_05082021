@@ -58,6 +58,7 @@ async function choiceProduct() {
 
 	// récupération des données de l'API à injecter dans les variables
 	newPhoto.src = url;
+	newPhoto.alt = data.name;
 	newName.innerText = data.name;
 	newPrice.innerText = "prix: " + data.price / 100 + " euros";
 	newDescription.innerText = data.description;

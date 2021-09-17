@@ -6,7 +6,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Panier</title>
-      <!-- <link rel="icon" href="img/favicon.ico" type="image/x-icon"> -->
+      <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
       <!-- preload -->
       <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style">
       <link rel="preload" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" as="style">
@@ -28,11 +28,11 @@
             </h1>
             <a href="/public/index.html" class="btnsLink">Continuer vos achats<i class="fas fa-cart-plus"></i></a>
          </header>
-         <main class="contenu">
+         <main class="container">
             <h2>Voici votre panier</h2>
             <table >
-               <tBody class="contenu-panier">
-                  <tr class="titre-tableau">
+               <tBody>
+                  <tr class="tabletitle">
                      <th>Nom</th>
                      <th>Couleur</th>
                      <th>Prix</th>
@@ -40,29 +40,29 @@
                   </tr>
                </tBody>
                <tfoot >
-                  <tr class="totalPanier">
+                  <tr class="totalBasket">
                      <td >Total panier</td>
                      <td ></td>
-                     <td class="somme"></td>
+                     <td class="sum"></td>
                      <td>               </td>
                   </tr>
                </tfoot>
             </table>
-            <section class="boutons boutons-panier ">
-               <button id="btnViderPanier" class="btnsProduit btnsLink">Vider mon panier</button>
-               <button id="validPanier" class="btnsProduit btnsLink">Valider mon panier et passer commande</button>
-            </section>
-            <section class="formulaire">           
-            </section>
+            <div class="buttons basketbtns ">
+               <button id="btnEmptyBasket" class="btnsProduct btnsLink">Vider mon panier</button>
+               <button id="validBasket" class="btnsProduct btnsLink">Valider mon panier et passer commande</button>
+            </div>
+            <div class="registrationform">           
+            </div>
          </main>
          <footer>
-            <a href="#" class="services">
+            <a href="#">
                <h3>Services et garanties</h3>
             </a>
-            <a href="#" class="contact">
+            <a href="#">
                <h3>Contacts</h3>
             </a>
-            <a href="#" class="legales">
+            <a href="#">
                <h3>Informations légales</h3>
             </a>
          </footer>

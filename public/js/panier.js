@@ -5,13 +5,13 @@
 // ---déclaration des variables utiles
 
 let tBody = document.querySelector('tBody');
-let somme = document.querySelector('.somme');
+let sum = document.querySelector('.sum');
 let titre = document.querySelector('h2');
 let tableau = document.querySelector('table');
-let contenu = document.querySelector('.contenu');
-let btnViderPanier = document.getElementById('btnViderPanier');
-let sectionBtns = document.querySelector('.boutons');
-let formulaire = document.querySelector('.formulaire');
+let container = document.querySelector('.container');
+let btnEmptyBasket = document.getElementById('btnEmptyBasket');
+let sectionBtns = document.querySelector('.buttons');
+let registrationform = document.querySelector('.registrationform');
 
 
 // récup produit stocké dans le localStorage et transformation du json en objet JS(tableau)
@@ -44,7 +44,7 @@ if (!produitpanier) {
 			newBtnSupprProd.innerHTML = '<button class="BtnSupprProd btnsLink">Supprimer du panier</button>';
 
 			// classes css dans variables
-			newArticle.classList = "article-panier";
+			newArticle.classList = "basketarticle";
 			newName.classList = "nom";
 			newPrice.classList = "prix";
 			newColor.classList = "couleur";
@@ -86,7 +86,7 @@ if (!produitpanier) {
 
 			// insertion du total dans le html
 			newPriceTotal.innerText = Total + " euros";
-			somme.appendChild(newPriceTotal);
+			sum.appendChild(newPriceTotal);
 
 			// insertion prix total dans le localStorage pour récupération en page commande
 			localStorage.prixTotal = JSON.stringify(Total);
@@ -118,7 +118,7 @@ if (!produitpanier) {
 
 	// ----------Activation d'un bouton pour vider totalement le panier
 
-	btnViderPanier.addEventListener("click", (e) => {
+	btnEmptyBasket.addEventListener("click", (e) => {
 		e.preventDefault();
 		localStorage.removeItem("panier");
 		localStorage.removeItem("prixTotal");
@@ -130,10 +130,10 @@ if (!produitpanier) {
 
 // ------validation du panier et ouverture du formulaire-----------------
 
-let btnValidPanier = document.getElementById('validPanier');
+let btnValidBasket = document.getElementById('validBasket');
 
 
-btnValidPanier.addEventListener("click", (e) => {
+btnValidBasket.addEventListener("click", (e) => {
 	// création et ouverture du formulaire
 	let form = `<form id="formValidation" method="post">
         <h3>Veuillez remplir ce formulaire afin de valider votre commande</h3>
@@ -161,8 +161,8 @@ btnValidPanier.addEventListener("click", (e) => {
         <input type="submit"id="submitCommand" value="envoyer" >
         </p>        
         </form>`;
-	formulaire.innerHTML = form;
-	contenu.appendChild(formulaire);
+	registrationform.innerHTML = form;
+	container.appendChild(registrationform);
 	// mettre le curseur sur le 1er champ du formulaire
 	firstName.focus();
 
@@ -188,7 +188,7 @@ btnValidPanier.addEventListener("click", (e) => {
 		// création de l'objet products contenant les id des produits du panier
 		let products = [];
 
-		for (let i = 0; i < produitpanier.length; i++) {			
+		for (let i = 0; i < produitpanier.length; i++) {
 			products.push(produitpanier[i].idProduit);
 		}
 		console.log(products);
@@ -208,15 +208,15 @@ btnValidPanier.addEventListener("click", (e) => {
 			}
 		};
 
-		fetch("http://localhost:3000/api/teddies/order", fetchData)			
+		fetch("http://localhost:3000/api/teddies/order", fetchData)
 			.then(res => res.json())
 			.then(data => {
 				console.table(data);
 
-	        //------- injection de la réponse de l'API dans le localstorage -------           
-			localStorage.resApi = JSON.stringify(data);
+				//------- injection de la réponse de l'API dans le localstorage -------           
+				localStorage.resApi = JSON.stringify(data);
 			});
-            
+
 		//message de validation et redirection vers page commande.html 
 		alert(`Votre commande a bien été validée`);
 		window.location.href = "commande.html";

@@ -1,7 +1,7 @@
 
 
 "use strict";
-const liste = document.querySelector('.liste');
+const list = document.querySelector('.list');
 
 // fonction asynchrone pour afficher liste des articles
 async function listArticles(i) {
@@ -27,6 +27,7 @@ async function listArticles(i) {
 		// récupération des données de l'API à injecter dans les variables
 		newName.innerText = data[i].name;
 		newPhoto.src = url;
+		newPhoto.alt = data[i].name;
 		newPrice.innerText = data[i].price / 100 + " euros";
 		newPrice.className = "prix";
 		newLink.href = `./vues/produit.html?id=${id}`;
@@ -40,7 +41,7 @@ async function listArticles(i) {
 		newArticle.appendChild(newLink);
 
 		// ajout des Div dans liste
-		liste.appendChild(newArticle);
+		list.appendChild(newArticle);
 	}
 };
 listArticles();

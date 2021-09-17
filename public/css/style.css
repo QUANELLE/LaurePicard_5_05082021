@@ -5,7 +5,7 @@
 	--color-backg-logo: rgb(243, 236, 238);
 	--color-backg-page: tan;
 	--color-backg-btn: rgb(82, 65, 40);
-	--color-backg-link: rgb(248, 230, 240);	
+	--color-backg-link: rgb(248, 230, 240);
 	--color-backg-tabl: rgb(126, 108, 84);
 	--color-text-backgtabl: wheat;
 }
@@ -31,23 +31,23 @@ header {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	flex-wrap: wrap;	
+	flex-wrap: wrap;
 	padding-bottom: 10px;
 	margin-right: auto;
 }
 
 header,
 footer {
-    width: 100vw;
+	width: 100vw;
 	background-color: var(--color-backg-logo);
 	margin: 0 auto;
 }
 
 main {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 #logo {
@@ -88,7 +88,7 @@ img {
 
 /* ---------------------------------page index------------------------------ */
 
-.contenu {
+.container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -100,7 +100,7 @@ img {
 .btnVoir {
 	display: inline-block;
 	border-radius: 15px;
-	padding: 0.5rem;	
+	padding: 0.5rem;
 	background-color: var(--color-backg-btn);
 	text-decoration: none;
 	color: white;
@@ -134,7 +134,7 @@ figure {
 
 .article {
 	border-radius: 30px 30px 0 0;
-	width: 70%;	
+	width: 70%;
 	border: var(--color-text) double 6px;
 	border-bottom: none;
 }
@@ -143,7 +143,7 @@ figure {
 	width: 70%;
 	justify-content: space-evenly;
 	border-radius: 0 0 30px 30px;
-	padding: 30px;	
+	padding: 30px;
 	border: var(--color-text) double 6px;
 	border-top: none;
 }
@@ -154,7 +154,7 @@ figure {
 	color: var(--color-text);
 }
 
-.btnAcheter {	
+.btnAcheter {
 	background-color: var(--color-backg-page);
 	border: solid 3px var(--color-text);
 	border-radius: 15px;
@@ -178,10 +178,10 @@ figure {
 
 /* -------------------------------page panier-------------------------------------- */
 
-.article-panier {
+.basketarticle {
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
 	width: 60vw;
 	background-color: var(--color-backg-logo);
 	padding: 20px;
@@ -189,8 +189,8 @@ figure {
 	border-radius: 10px;
 }
 
-.titre-tableau,
-.totalPanier {
+.tabletitle,
+.totalBasket {
 	display: flex;
 	justify-content: space-between;
 	width: 60vw;
@@ -201,20 +201,20 @@ figure {
 	border-radius: 10px;
 }
 
-.boutons {
+.buttons {
 	display: flex;
 	border-radius: 20px;
-	justify-content: center;	
+	justify-content: center;
 	padding: 20px;
 	background-color: var(--color-backg-link);
 	align-items: stretch;
 }
 
-.boutons-panier {
+.basketbtns {
 	width: 60vw;
 }
 
-.btnsProduit {
+.btnsProduct {
 	display: block;
 	margin: auto 20px;
 	background-color: var(--color-backg-page);
@@ -222,8 +222,8 @@ figure {
 	border-style: none;
 }
 
-.BtnSupprProd{
-    margin: auto;
+.BtnSupprProd {
+	margin: auto;
 }
 
 th,
@@ -233,10 +233,10 @@ td {
 }
 
 #formValidation {
-    padding: 10px 20px;
-    border: var(--color-text) double 6px;
-    border-radius: 15px;
-    margin-top: 10px;
+	padding: 10px 20px;
+	border: var(--color-text) double 6px;
+	border-radius: 15px;
+	margin-top: 10px;
 }
 
 #formValidation input {
@@ -263,6 +263,7 @@ input:required:invalid {
 	border: solid 2px red;
 }
 
+
 /* ------------------------page commande -------------------------------------*/
 
 #main-commande {
@@ -279,6 +280,7 @@ input:required:invalid {
 	line-height: 2;
 }
 
+
 /* -----------------------------------Footer------------------------------------ */
 
 footer {
@@ -290,6 +292,7 @@ footer {
 footer a {
 	text-decoration: none;
 }
+
 
 /* ----------------------------media queries-------------------------------------------- */
 
@@ -314,7 +317,7 @@ footer a {
 		align-items: center;
 	}
 	.BtnSupprProd,
-	td.prix {		
+	td.prix {
 		font-size: 0.8rem;
 		font-weight: 100;
 	}
@@ -324,8 +327,8 @@ footer a {
 }
 
 @media screen and (max-width: 425px) {
-	.article-panier,
-	.titre-tableau {
+	.basketarticle,
+	.tabletitle {
 		flex-wrap: wrap;
 		font-size: 0.7rem;
 	}
