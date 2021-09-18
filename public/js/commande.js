@@ -1,3 +1,5 @@
+
+
 "use strict";
 
 let message = document.getElementById('message');
@@ -8,7 +10,7 @@ let commandFinal = JSON.parse(localStorage.getItem("resApi"));
 console.log(commandFinal);
 
 // récup du prix total de la commande stocké dans le localStorage
-let Total =JSON.parse(localStorage.getItem("prixTotal"));
+let Total = JSON.parse(localStorage.getItem("prixTotal"));
 console.log(Total);
 
 // récup de l'id de commande renvoyé par l'API
@@ -16,4 +18,5 @@ let idCommand = commandFinal.orderId;
 console.log(idCommand);
 
 // création du message de validation
-message.innerText = `Nous vous remercions de votre commande N°${idCommand}d'un montant total de ${Total} euros.`;
+message.innerText = `Nous vous remercions de votre commande N°${idCommand} d'un montant total de ${Total} euros.`;
+
