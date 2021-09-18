@@ -2,7 +2,9 @@
 
 This is the back end server for Project 5 of the Junior Web Developer path.
 
-## mON READmE fRONT
+## MON README FRONT
+Projet 5 pour parcours Développeur Web d'OpenClassRooms.
+Mes fichiers Frontend sont dans le dossier "public".Le backend dont les spécificités sont décrites ci-dessous est accessible à l'adresse suivante: http://localhost:3000/api/teddies.
 
 ### Prerequisites ###
 
