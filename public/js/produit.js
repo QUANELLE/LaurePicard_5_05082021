@@ -9,15 +9,15 @@ const article = document.querySelector('.article');
 let params = new URL(window.location.href).searchParams;
 let id = params.get('id');
 
-// creation sous forme de variables des éléments à injecter dans le DOM
-let newName = document.createElement('h2');
-let newPrice = document.createElement('p');
-let newPhoto = document.createElement('img');
-let newDescription = document.createElement('p');
-let newForm = document.createElement('form');
-let newLabel = document.createElement('label');
-let newSelect = document.createElement('select');
-let newBtnSubmit = document.createElement('input');
+// creation des éléments à injecter dans le DOM
+const newName = document.createElement('h2');
+const newPrice = document.createElement('p');
+const newPhoto = document.createElement('img');
+const newDescription = document.createElement('p');
+const newForm = document.createElement('form');
+const newLabel = document.createElement('label');
+const newSelect = document.createElement('select');
+const newBtnSubmit = document.createElement('input');
 
 // création de variables nécessaires 
 let selectOption = [];
@@ -41,7 +41,7 @@ function optionColors(colors) {
 //----------- mettre plusieurs produits dans localstorage---------------
 function insertLocalStorage() {
 
-	// // variable qui récupère le contenu du localStorage en JS
+	// variable qui récupère le contenu du localStorage en JS
 	let listProductStock = JSON.parse(localStorage.getItem("panier"));
 
 	// instructions if...else suivant si il y a déjà un produit dans le panier( et donc dans le localStorage)
@@ -87,22 +87,23 @@ function choiceProduct() {
 
 			// récupération tableau couleurs
 			let colors = data.colors;
+
 			// fonction boucle options 
 			optionColors(colors);
 
 			// récupération données pour panier
 			idProduit = data._id,
-				nomProduit = data.name,
-				prix = data.price / 100,
+			nomProduit = data.name,
+			prix = data.price / 100,
 
-				// récupération des données de l'API à injecter dans les variables
-				newPhoto.src = url;
+			// récupération des données de l'API à injecter dans les variables
+			newPhoto.src = url;
 			newPhoto.alt = nomProduit;
 			newName.innerText = nomProduit;
 			newPrice.innerText = "prix: " + prix + " euros";
 			newDescription.innerText = data.description;
 
-			// création des balises html du formulaire
+			// création des caractéristiques des balises html du formulaire
 			newLabel.innerText = "Choisissez la couleur ";
 			newLabel.htmlFor = "couleurs";
 			newSelect.setAttribute("name", "choixCouleurs");
@@ -113,7 +114,6 @@ function choiceProduct() {
 			newBtnSubmit.className = "btnAcheter";
 			newPrice.className = "prix";
 			newForm.className = "form-prod";
-
 
 			// création liste déroulante options en y injectant balises html
 			newForm.appendChild(newLabel);
@@ -135,3 +135,4 @@ function choiceProduct() {
 		})
 };
 choiceProduct();
+

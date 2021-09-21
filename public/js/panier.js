@@ -2,40 +2,40 @@
 
 "use strict";
 
-// ---déclaration des variables utiles
+// ---déclaration des constantes et variables utiles
 
-let tBody = document.querySelector('tBody');
-let sum = document.querySelector('.sum');
-let title = document.querySelector('h2');
-let table = document.querySelector('table');
-let container = document.querySelector('.container');
-let btnEmptyBasket = document.getElementById('btnEmptyBasket');
-let sectionBtns = document.querySelector('.buttons');
-let registrationform = document.querySelector('.registrationform');
+const tBody = document.querySelector('tBody');
+const sum = document.querySelector('.sum');
+const title = document.querySelector('h2');
+const table = document.querySelector('table');
+const container = document.querySelector('.container');
+const btnEmptyBasket = document.getElementById('btnEmptyBasket');
+const sectionBtns = document.querySelector('.buttons');
+const registrationform = document.querySelector('.registrationform');
 let AllBtnSupprProd;
 
 // récup produit stocké dans le localStorage et transformation du json en objet JS(tableau)
 let productbasket = JSON.parse(localStorage.getItem("panier"));
 
-// ---------------insertion des éléments dans le html du panier-----------------
+// ----insertion des éléments dans le html de la page panier-------
 
 function insertElsBasket() {
 	for (let i = 0; i < productbasket.length; i++) {
 
-		// creation sous forme de variables des éléments à injecter dans le DOM
-		let newArticle = document.createElement('tr');
-		let newName = document.createElement('td');
-		let newColor = document.createElement('td');
-		let newPrice = document.createElement('td');
-		let newBtnSupprProd = document.createElement('td');
+		// creation des éléments à injecter dans le DOM
+		const newArticle = document.createElement('tr');
+		const newName = document.createElement('td');
+		const newColor = document.createElement('td');
+		const newPrice = document.createElement('td');
+		const newBtnSupprProd = document.createElement('td');
 
-		// Données  à injecter dans les variables
+		// Données  à injecter dans les balises
 		newName.innerText = productbasket[i].nomProduit;
 		newPrice.innerText = productbasket[i].prix + " euros";
 		newColor.innerText = productbasket[i].choixCouleur;
 		newBtnSupprProd.innerHTML = '<button class="BtnSupprProd btnsLink">Supprimer du panier</button>';
 
-		// classes css dans variables
+		// classes css dans balises
 		newArticle.classList = "basketarticle";
 		newName.classList = "nom";
 		newPrice.classList = "prix";
@@ -54,13 +54,13 @@ function insertElsBasket() {
 
 //----------------- prix total du panier--------------------------
 
-// creation sous forme de variables de l'élément à injecter dans le tfoot
-let newPriceTotal = document.createElement('td');
+// creation de l'élément à injecter dans le tfoot
+const newPriceTotal = document.createElement('td');
 
 // initialisation d'un tableau où seront listés les prix des articles du panier
 let TotalPrices = [];
 
-// ........création d'une fonction pour le calcul du prix total du panier........
+// --- fonction pour le calcul du prix total du panier-----
 const calcTotal = () => {
 
 	// boucle pour récupérer les prix du panier et en faire leur somme
@@ -114,7 +114,9 @@ function emptyBasket() {
 		alert(`Votre panier a bien été vidé`);
 		window.location.href = "panier.html";
 	})
-}
+};
+
+// -----fonction d'affichage du panier------------
 function displayBasket() {
 
 	if (!productbasket) {
@@ -127,9 +129,9 @@ function displayBasket() {
 		insertElsBasket();
 		calcTotal();
 
-		// 	//  sélection de tous les boutons de suppression d'un produit
+		//  sélection de tous les boutons de suppression d'un produit
 		AllBtnSupprProd = document.querySelectorAll(".BtnSupprProd");
-		// --Activation des boutons "supprimer un produit" du panier
+		// Activation des boutons "supprimer un produit" du panier
 		supprProd();
 		// Activation d'un bouton pour vider totalement le panier
 		emptyBasket();
@@ -137,10 +139,10 @@ function displayBasket() {
 };
 displayBasket();
 
-// ------validation du panier et ouverture du formulaire-----------------
+// ------validation du panier et ouverture du formulaire-------
 
-let btnValidBasket = document.getElementById('validBasket');
-// création et ouverture du formulaire
+const btnValidBasket = document.getElementById('validBasket');
+//---- fonction création et ouverture du formulaire----
 function openForm() {
 	let form = `<form id="formValidation" method="post">
 	<h3>Veuillez remplir ce formulaire afin de valider votre commande</h3>
@@ -174,11 +176,12 @@ function openForm() {
 	firstName.focus();
 }
 
-// ---------------- validation commande pour envoyer au serveur------------
+// ----------validation commande pour envoyer au serveur-------
 
 // récupération des données du formulaire au click de validation
 
 const formValidation = document.getElementById('formValidation');
+
 function validCommand() {
 
 	document.forms['formValidation'].addEventListener('submit', (e) => {
@@ -195,11 +198,9 @@ function validCommand() {
 
 		// création de l'objet products contenant les id des produits du panier
 		let products = [];
-
 		for (let i = 0; i < productbasket.length; i++) {
 			products.push(productbasket[i].idProduit);
 		}
-		console.log(products);
 
 		//création de l'objet à envoyer au serveur
 		let command = {
@@ -219,9 +220,8 @@ function validCommand() {
 		fetch("http://localhost:3000/api/teddies/order", fetchData)
 			.then(res => res.json())
 			.then(data => {
-				console.table(data);
 
-				//------- injection de la réponse de l'API dans le localstorage -------           
+			//----injection de la réponse de l'API dans le localstorage ---          
 				localStorage.resApi = JSON.stringify(data);
 			});
 
@@ -238,3 +238,4 @@ function validBasket() {
 	});
 }
 validBasket();
+
