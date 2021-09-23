@@ -6,23 +6,23 @@ const list = document.querySelector('.list');
 // fonction asynchrone pour afficher liste des articles
 async function listArticles(i) {
 	// appel à l'API
-	const response = await fetch("http://localhost:3000/api/teddies");
+	let response = await fetch("http://localhost:3000/api/teddies");
 
-	const data = await response.json();
+	let data = await response.json();
 
 	// boucle itérative pour afficher chaque article
 	for (i = 0; i < data.length; i++) {
-		// creation sous forme de variables des éléments à injecter dans le DOM
-		let newArticle = document.createElement('figure');
-		let newName = document.createElement('h3');
-		let newPrice = document.createElement('p');
-		let newPhoto = document.createElement('img');
-		let newLink = document.createElement('a');
+		// creation des éléments à injecter dans le DOM
+		const newArticle = document.createElement('figure');
+		const newName = document.createElement('h3');
+		const newPrice = document.createElement('p');
+		const newPhoto = document.createElement('img');
+		const newLink = document.createElement('a');
 
 		// récupération de l'url de l'image
-		const url = data[i].imageUrl;
+		let url = data[i].imageUrl;
 		// récupération de l'id
-		const id = data[i]._id;
+		let id = data[i]._id;
 
 		// récupération des données de l'API à injecter dans les variables
 		newName.innerText = data[i].name;

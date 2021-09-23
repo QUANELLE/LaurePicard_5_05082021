@@ -2,10 +2,14 @@
 
 This is the back end server for Project 5 of the Junior Web Developer path.
 
-## MON README FRONT
+## Backend project
+The Github repository is accessible at the following address: https://github.com/OpenClassrooms-Student-Center/JWDP5.git.
+After setup, the backend is accessible at the following address:http://localhost:3000/api/teddies.
+
+
+## Frontend project
 Project 5 for OpenClassRooms Web Developer course. 
 My Frontend files are in the "public" folder. 
-The backend is accessible at the following address:http://localhost:3000/api/teddies.
 
 ### Prerequisites ###
 
