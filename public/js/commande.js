@@ -4,7 +4,7 @@
 
 const message = document.getElementById('message');
 
-// récup produit stocké dans le localStorage et transformation du json en objet JS(tableau)
+// récup produit stocké dans le localStorage et transformation du json en objet JS
 let commandFinal = JSON.parse(localStorage.getItem("resApi"));
 
 // récup du prix total de la commande stocké dans le localStorage
