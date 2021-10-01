@@ -111,6 +111,7 @@ function emptyBasket() {
 		e.preventDefault();
 		localStorage.removeItem("panier");
 		localStorage.removeItem("prixTotal");
+		localStorage.removeItem("resApi");
 		alert(`Votre panier a bien été vidé`);
 		window.location.href = "panier.html";
 	})
